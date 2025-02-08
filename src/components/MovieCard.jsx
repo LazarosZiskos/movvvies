@@ -17,17 +17,17 @@ const MovieCard = ({
         <h3 className="text-white pb-2 font-bold">{title}</h3>
         <div className="flex text-white gap-2">
           <img src="star.svg" alt="star" />
-          {vote_average.toFixed(1)}
-          <span className="text-gray-100">• {original_language}</span>
+          {vote_average.toFixed(1)}/10
+          <span className="text-gray-100 uppercase">• {original_language}</span>
           <span className="text-gray-100">
             • {release_date ? release_date.split("-")[0] : "null"}
           </span>
         </div>
-        <div className=" pt-5">
+        {/* <div className=" pt-5">
           <button className="bg-[#221F3D] border border-gray-100 text-white py-2 rounded-xl w-full cursor-pointer border-black">
             More
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
