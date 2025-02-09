@@ -20,14 +20,15 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (query = "") => {
     setIsLoading(true);
     try {
-      const results = await fetch(
-        BASE_URL + "/discover/movie?sort_by=popularity.desc",
-        API_OPTIONS
-      );
-      const data = await results.json();
+      const endpoint = query
+        ? `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        : `${BASE_URL}/discover/movie?sort_by=popularity.desc`;
+
+      const response = await fetch(endpoint, API_OPTIONS);
+      const data = await response.json();
       setMovies(data.results);
     } catch (error) {
       console.error(error);
@@ -37,15 +38,15 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    fetchMovies(searchTerm);
+  }, [searchTerm]);
 
   return (
     <main>
       <header className="mt-15 flex justify-center items-center flex-col">
         <img src="logo (1).png" alt="logo" />
         <img src="hero.png" alt="hero-image" />
-        <h1 className="max-w-4x mx-auto leading-tight text-5xl tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px] text-white text-center tracking-wide">
+        <h1 className="max-w-4x mx-auto leading-tight text-5xl tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px] text-center ">
           Find <span className="text-[#AB8BFF]">Movies</span> You&apos;ll Love
           Without the Hassle
         </h1>
