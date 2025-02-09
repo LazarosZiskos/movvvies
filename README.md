@@ -1,11 +1,10 @@
 <img src="/public/movvvies-screenshot.png" alt="Movvvies Wallpaper" width="100%">
 
-# Techcnologies Used
+# Technologies Used
 ![My Skills](https://skillicons.dev/icons?i=js,react,vite,tailwind,github,vercel,figma)
 
 
 # Movvvies - Movie search API platform
-![My Skills](https://skillicons.dev/icons?i=js,react,vite,tailwind,github,vercel,figma)
 
 Movvvies is a project that utilized the TMDB API to display the most popular and top rated movies of all time. Also the user can search and find their favorite movie through the search functionality. 
 
