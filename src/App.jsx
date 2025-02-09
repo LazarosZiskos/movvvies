@@ -67,8 +67,8 @@ const App = () => {
         <img src="logo (1).png" alt="logo" />
         <img src="hero.png" alt="hero-image" />
         <h1 className="max-w-4x mx-auto leading-tight text-5xl tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px] text-center ">
-          Find <span className="text-[#AB8BFF]">Movies</span> You&apos;ll Love
-          Without the Hassle
+          Easily Find and Enjoy <span className="text-[#AB8BFF]">Movies</span>{" "}
+          You&apos;ll Love Without the Stress.
         </h1>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </header>
