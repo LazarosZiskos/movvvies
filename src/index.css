@@ -22,6 +22,20 @@
     --background-image-hero-pattern: url("/hero-bg.png");
   }
 
+  @utility fancy-text {
+    -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
+    font-size: 190px;
+    font-family: "Bebas Neue", sans-serif;
+  }
+
+  @utility hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   @layer base {
     body {
@@ -34,3 +48,9 @@
         .pattern {
           @apply bg-hero-pattern w-screen h-screen bg-center bg-cover absolute z-0;
         }}
+
+
+    
+
+
+       

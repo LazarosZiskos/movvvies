@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import { useEffect, useState } from "react";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
+import { useDebounce } from "react-use";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -19,6 +20,10 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState();
+  const [topMovies, setTopMovies] = useState([]);
+
+  useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
   const fetchMovies = async (query = "") => {
     setIsLoading(true);
@@ -38,8 +43,23 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
+
+  const fetchTopMovies = async () => {
+    try {
+      const res = await fetch(`${BASE_URL}/movie/top_rated`, API_OPTIONS);
+      const data = await res.json();
+      setTopMovies(data.results);
+      console.log(data.results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopMovies();
+  }, []);
 
   return (
     <main>
@@ -52,6 +72,33 @@ const App = () => {
         </h1>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </header>
+
+      {topMovies.length > 0 && (
+        <section className="mt-20">
+          <h2 className="text-white font-bold text-2xl text-left sm:text-3xl pb-5">
+            Top Rated Movies
+          </h2>
+          <ul className="flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar">
+            {topMovies.map((movie, index) => (
+              <li
+                key={movie.id}
+                className="min-w-[230px] flex flex-row items-center"
+              >
+                <p className="fancy-text mt-[22px] text-nowrap">{index + 1}</p>
+                <img
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      : "/no-movie.png"
+                  }
+                  alt={movie.title}
+                  className="w-[127px] h-[163px] rounded-lg object-cover -ml-3.5"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <section className="space-y-9 mt-15">
         <h2 className="text-white font-bold text-2xl text-left sm:text-3xl pb-5">
           Popular Movies
