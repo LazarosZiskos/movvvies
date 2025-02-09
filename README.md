@@ -1,8 +1,10 @@
-<img src="movvvies-screenshot.png" alt="Movvvies Wallpaper" width="100%">
+<img src="/public/movvvies-screenshot.png" alt="Movvvies Wallpaper" width="100%">
 
 # Movvvies - Movie search API platform
 
-Movvvies is a project that utilized the TMDB API to display the most popular and top rated movies of all time. Also the user can search and find their favorite movie through the search functionality.
+Movvvies is a project that utilized the TMDB API to display the most popular and top rated movies of all time. Also the user can search and find their favorite movie through the search functionality. 
+
+This project was created as a practice project to enhance my skills in API usage, data handling, and front-end development. It also served as practice in transforming Figma designs into a fully functional project.
 
 **[View deployed application here](https://movvvies.vercel.app/)**
 
@@ -40,7 +42,7 @@ npm run dev
 
 ### Technologies Used
 
-![My Skills](https://skillicons.dev/icons?i=ts,react,vite,tailwind,github,vercel,figma)
+![My Skills](https://skillicons.dev/icons?i=js,react,vite,tailwind,github,vercel,figma)
 
 ## Contact Information:
 
