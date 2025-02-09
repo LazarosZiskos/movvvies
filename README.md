@@ -1,4 +1,5 @@
 <img src="/public/movvvies-screenshot.png" alt="Movvvies Wallpaper" width="100%">
+![My Skills](https://skillicons.dev/icons?i=js,react,vite,tailwind,github,vercel,figma)
 
 # Movvvies - Movie search API platform
 
